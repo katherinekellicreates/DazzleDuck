@@ -9,15 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            CustomText(text: "DazzleDuck")
-                Spacer()
+        NavigationView {
+            ZStack {
+                VStack {
+                    CustomText(text: "DazzleDuck")
+                    Spacer()
+                    NavigationLink(destination: PlayView()) {
+                        Text("Play")
+                            .frame(width: 100)
+                            .font(Font.custom("Bodoni 72 Oldstyle", size: 45))
+                            .padding()
+                            .background(.pink)
+                            .foregroundStyle(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    Spacer()
+                }
+            }
         }
-        .padding()
-        Button("Play") {
-            
-        }
-        .buttonStyle(CustomButtonStyle())
     }
 }
 
