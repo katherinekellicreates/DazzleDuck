@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayView: View {
-    let ducks = ["duck1","duck2","duck3","duck4","duck5","duck6","duck7","duck8","duck11","duck12","duck13"]
+    let ducks = ["duck1","duck2","duck3","duck4","duck5","duck6","duck7","duck8","duck9","duck10","duck11","duck12"]
     @State private var duckIndex = 0
     var body: some View {
         NavigationView {
@@ -39,8 +39,7 @@ struct PlayView: View {
                         .buttonStyle(CustomButtonStyle4())
                     }
                     Spacer()
-                    NavigationLink(destination: PlayView()) {
-                        Text("")
+                    NavigationLink(destination: EyeView(selectedDuck: ducks[duckIndex])) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 50))
                             .foregroundStyle(Color.green)
