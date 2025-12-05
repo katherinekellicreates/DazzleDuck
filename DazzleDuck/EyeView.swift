@@ -52,6 +52,16 @@ struct EyeView: View {
                         .foregroundColor(.black)
                 }
             }
+            NavigationLink(
+                destination: HatView(
+                    selectedDuck: selectedDuck,
+                    selectedEyes: eyes[eyeIndex]
+                )
+            ) {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 50))
+                    .foregroundStyle(Color.green)
+            }
         }
         .padding()
     }
@@ -63,7 +73,8 @@ struct CustomText4: View {
         Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50))
     }
 }
-// ✅ Preview for EyeView
 #Preview {
-    EyeView(selectedDuck: "duck1")
+    NavigationView {
+        EyeView(selectedDuck: "duck1")
+    }
 }
