@@ -13,30 +13,33 @@ struct PlayView: View {
     
     @State private var duckIndex = 0
     var body: some View {
-        VStack {
-            CustomText2(text: "What color is your duck?")
-                .multilineTextAlignment(.center)
-            Image(ducks[duckIndex]).resizable().scaledToFit().frame(width: 480, height: 480)
-            
-            HStack(spacing: 150) {
-                ArrowButton(direction: .left) { duckIndex = (duckIndex - 1 + ducks.count) % ducks.count }
-                ArrowButton(direction: .right) { duckIndex = (duckIndex + 1) % ducks.count }
+        ZStack {
+            Color("AccentColor").ignoresSafeArea(.all)
+            VStack {
+                CustomText2(text: "What color is your duck?")
+                    .multilineTextAlignment(.center)
+                Image(ducks[duckIndex]).resizable().scaledToFit().frame(width: 480, height: 480)
+                
+                HStack(spacing: 150) {
+                    ArrowButton(direction: .left) { duckIndex = (duckIndex - 1 + ducks.count) % ducks.count }
+                    ArrowButton(direction: .right) { duckIndex = (duckIndex + 1) % ducks.count }
+                }
+                NavigationLink(destination: EyeView(selectedDuck: ducks[duckIndex])) {
+                    Image(systemName: "checkmark.circle.fill").font(.system(size: 50)).foregroundStyle(Color("Color"))
+                }
+                .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
             }
-            NavigationLink(destination: EyeView(selectedDuck: ducks[duckIndex])) {
-                Image(systemName: "checkmark.circle.fill").font(.system(size: 50)).foregroundStyle(Color.green)
-            }
-            .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
-        }
-        .padding()
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: { dismiss() }) {
-                    HStack(spacing: 4) {
-                        Image(systemName: "chevron.left")
-                        Text("Back")
-                        
+            .padding()
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { dismiss() }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left")
+                            Text("Back")
+                            
+                        }
                     }
                 }
             }

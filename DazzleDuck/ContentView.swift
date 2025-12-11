@@ -20,31 +20,33 @@ struct ArrowButton: View {
             Image(systemName: direction == .left ? "arrowshape.left.fill" : "arrowshape.right.fill")
                 .resizable()
                 .frame(width: 60, height: 50)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
         }
     }
 }
 // pretty text
-struct CustomText: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 60 )) } }
-struct CustomText2: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 39 )) } }
-struct CustomText4: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 44 )) } }
-struct CustomText5: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50 )) } }
-struct CustomText6: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50 )) } }
+struct CustomText: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 60 )).foregroundColor(.white) } }
+struct CustomText2: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 39 )) .foregroundColor(.white) } }
+struct CustomText4: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 44 )).foregroundColor(.white)  } }
+struct CustomText5: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50 )).foregroundColor(.white)  } }
+struct CustomText6: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50 )).foregroundColor(.white)  } }
 
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            VStack {
-                CustomText(text: "DazzleDuck")
-                Spacer()
-                NavigationLink(destination: PlayView()) {
-                    Text("Play")
-                        .frame(width: 100)
-                        .font(Font.custom("Bodoni 72 Oldstyle", size: 45))
-                        .padding()
-                        .background(.pink)
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+            ZStack {
+                Color("Background").ignoresSafeArea(.all)
+                VStack {
+                    CustomText(text: "DazzleDuck")
+                    Spacer()
+                    NavigationLink(destination: PlayView()) {
+                        Text("Play")
+                            .frame(width: 100)
+                            .font(Font.custom("Bodoni 72 Oldstyle", size: 45))
+                            .padding()
+                            .background(Color("AccentColor"))
+                            .foregroundStyle(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                     .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
                     Spacer()
@@ -54,6 +56,7 @@ struct ContentView: View {
             .navigationViewStyle(.stack)
         }
     }
+}
 
 #Preview {
     ContentView()
