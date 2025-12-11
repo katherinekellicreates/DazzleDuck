@@ -33,7 +33,7 @@ struct CustomText6: View { let text: String; var body: some View { Text(text).fo
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 CustomText(text: "DazzleDuck")
                 Spacer()

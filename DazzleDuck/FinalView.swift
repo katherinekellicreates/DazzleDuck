@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct FinalView: View {
+    @Environment(\.dismiss) var dismiss
     let selectedDuck: String
     let selectedEyes: String
     let selectedHat: String
-    let selectedAccessory: String
     let selectedClothing: String
+    let selectedAccessory: String
     
     
     var body: some View {
@@ -25,8 +26,8 @@ struct FinalView: View {
                 Image(selectedDuck).resizable().scaledToFit().frame(width: 480, height: 480)
                 Image(selectedEyes).resizable().scaledToFit().frame(width: 480, height: 480)
                 Image(selectedHat).resizable().scaledToFit().frame(width: 480, height: 480)
-                Image(selectedAccessory).resizable().scaledToFit().frame(width: 480, height: 480)
                 Image(selectedClothing).resizable().scaledToFit().frame(width: 480,height: 480)
+                Image(selectedAccessory).resizable().scaledToFit().frame(width: 480, height: 480)
             }
             NavigationLink(destination: ContentView()) {
                 HStack {
@@ -37,16 +38,29 @@ struct FinalView: View {
             .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
         }
         .padding()
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: { dismiss() }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                        Text("Back")
+                        
+                    }
+                }
+            }
+        }
     }
 }
 #Preview {
-    NavigationView {
+    NavigationStack {
         FinalView(
             selectedDuck: "duck1",
             selectedEyes: "eyes1",
             selectedHat: "hat1",
-            selectedAccessory: "acc1",
-            selectedClothing: "shirt1"
+            selectedClothing: "shirt1",
+            selectedAccessory: "acc1"
         )
     }
 }

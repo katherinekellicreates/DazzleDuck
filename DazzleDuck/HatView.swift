@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HatView: View {
+    @Environment(\.dismiss) var dismiss
     let selectedDuck: String
     let selectedEyes: String
     let hats = ["hat1", "hat2", "hat3"]
@@ -27,19 +28,32 @@ struct HatView: View {
                 ArrowButton(direction: .left) { hatIndex = (hatIndex - 1 + hats.count) % hats.count }
                 ArrowButton(direction: .right) { hatIndex = (hatIndex + 1) % hats.count }
             }
-            NavigationLink(destination: AccsView(selectedDuck: selectedDuck, selectedEyes: selectedEyes, selectedHat: hats[hatIndex])) {
+            NavigationLink(destination: ClothingView(selectedDuck: selectedDuck, selectedEyes: selectedEyes, selectedHat: hats[hatIndex])) {
                 Image(systemName: "checkmark.circle.fill").font(.system(size: 50)).foregroundColor(.green)
             }
             .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
         }
         .padding()
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: { dismiss() }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                        Text("Back")
+                        
+                    }
+                }
+            }
+        }
     }
 }
-#Preview {
-    NavigationView {
-        HatView(
-            selectedDuck: "duck1",
-            selectedEyes: "eyes1"
-        )
-    }
-}
+        #Preview {
+            NavigationStack {
+                HatView(
+                    selectedDuck: "duck1",
+                    selectedEyes: "eyes1"
+                )
+            }
+        }
