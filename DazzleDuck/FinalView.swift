@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FinalView: View {
-    @Environment(\.dismiss) var dismiss
-    @Binding var selectedColor: Color
+    @Environment(\.dismiss) var dismiss // back button
+    @Binding var selectedColor: Color // for color
     let selectedDuck: String
     let selectedEyes: String
     let selectedHat: String
@@ -39,6 +39,7 @@ struct FinalView: View {
                 .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
             }
             .padding()
+            // back button
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {

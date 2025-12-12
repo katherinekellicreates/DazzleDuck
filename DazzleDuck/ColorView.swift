@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ColorView: View {
-    @State private var color = Color("AccentColor")
-    @Environment(\.dismiss) var dismiss
+    @State private var color = Color("AccentColor") // color picker
+    @Environment(\.dismiss) var dismiss // back button
     let selectedDuck: String
     let selectedEyes: String
     let selectedHat: String
@@ -25,6 +25,7 @@ struct ColorView: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 20)
                 
+                // color picker
                 ColorPicker("", selection: $color)
                     .labelsHidden()
                     .padding()
@@ -42,6 +43,7 @@ struct ColorView: View {
                 .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
             }
             .padding()
+            // back button
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {
@@ -58,6 +60,7 @@ struct ColorView: View {
     }
 }
     #Preview {
+        //selected items
         ColorView(
             selectedDuck: "duck1",
             selectedEyes: "eyes1",

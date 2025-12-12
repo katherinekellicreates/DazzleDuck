@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HatView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss // back button
     let selectedDuck: String
     let selectedEyes: String
     let hats = ["hat1", "hat2", "hat3"]
@@ -36,6 +36,7 @@ struct HatView: View {
                 .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
             }
             .padding()
+            // back button
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {

@@ -25,7 +25,7 @@ struct ArrowButton: View {
     }
 }
 // pretty text
-struct CustomText: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 60 )).foregroundColor(.white) } }
+struct CustomText: View { let text: String; var body: some View { Text(text).font(Font.custom("ChristmasWish-Calligraphy", size: 90 )).foregroundColor(.white) } }
 struct CustomText2: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 38 )) .foregroundColor(.white) } }
 struct CustomText4: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 44 )).foregroundColor(.white)  } }
 struct CustomText5: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50 )).foregroundColor(.white)  } }
@@ -37,7 +37,7 @@ struct ContentView: View {
             ZStack {
                 Color("Background").ignoresSafeArea(.all)
                 VStack {
-                    CustomText(text: "DazzleDuck")
+                    CustomText(text:" DazzleDuck ") //works with font
                     Spacer()
                     NavigationLink(destination: PlayView()) {
                         Text("Play")

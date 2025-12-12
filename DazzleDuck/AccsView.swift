@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccsView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss // back button
     let selectedDuck: String
     let selectedEyes: String
     let selectedHat: String
@@ -40,6 +40,7 @@ struct AccsView: View {
                 .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
             }
             .padding()
+            // back button
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {

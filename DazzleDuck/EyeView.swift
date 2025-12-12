@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EyeView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss // back button
     let selectedDuck: String
     let eyes = ["eyes1", "eyes2", "eyes3"]
     @State private var eyeIndex = 0
@@ -35,6 +35,7 @@ struct EyeView: View {
                     .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
                 }
                 .padding()
+            // back button
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
