@@ -16,8 +16,6 @@ struct EyeView: View {
     var body: some View {
         ZStack {
             Color("AccentColor").ignoresSafeArea(.all)
-            ZStack {
-                Color("AccentColor").ignoresSafeArea(.all)
                 VStack(spacing: 20) {
                     CustomText4(text: "Pick your duck’s eyes!")
                         .multilineTextAlignment(.center)
@@ -53,7 +51,6 @@ struct EyeView: View {
             }
         }
     }
-}
 #Preview {
     NavigationView {
         EyeView(selectedDuck: "duck1")

@@ -26,7 +26,7 @@ struct ArrowButton: View {
 }
 // pretty text
 struct CustomText: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 60 )).foregroundColor(.white) } }
-struct CustomText2: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 39 )) .foregroundColor(.white) } }
+struct CustomText2: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 38 )) .foregroundColor(.white) } }
 struct CustomText4: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 44 )).foregroundColor(.white)  } }
 struct CustomText5: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50 )).foregroundColor(.white)  } }
 struct CustomText6: View { let text: String; var body: some View { Text(text).font(Font.custom("Bodoni 72 Oldstyle", size: 50 )).foregroundColor(.white)  } }

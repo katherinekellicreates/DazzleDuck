@@ -1,41 +1,43 @@
 //
-//  AccsView.swift
+//  ColorView.swift
 //  DazzleDuck
 //
-//  Created by Katherine Pizzirusso on 12/4/25.
+//  Created by Katherine Pizzirusso on 12/11/25.
 //
 
 import SwiftUI
 
-struct AccsView: View {
+struct ColorView: View {
+    @State private var color = Color("AccentColor")
     @Environment(\.dismiss) var dismiss
     let selectedDuck: String
     let selectedEyes: String
     let selectedHat: String
     let selectedClothing: String
-    let accessories = ["acc1", "acc2", "acc3"]
-    @State private var accessoryIndex = 0
+    let selectedAccessory: String
     
     var body: some View {
         ZStack {
-            Color("AccentColor").ignoresSafeArea(.all)
+            color.ignoresSafeArea()
+            
             VStack(spacing: 20) {
-                CustomText5(text:"Pick accessories!")
+                CustomText2(text: "Pick a background color!")
                     .multilineTextAlignment(.center)
+                    .padding(.top, 20)
+                
+                ColorPicker("", selection: $color)
+                    .labelsHidden()
+                    .padding()
+                
                 ZStack {
                     Image(selectedDuck).resizable().scaledToFit().frame(width: 480, height: 480)
                     Image(selectedEyes).resizable().scaledToFit().frame(width: 480, height: 480)
                     Image(selectedHat).resizable().scaledToFit().frame(width: 480, height: 480)
                     Image(selectedClothing).resizable().scaledToFit().frame(width: 480,height: 480)
-                    Image(accessories[accessoryIndex]).resizable().scaledToFit().frame(width: 480, height: 480)
+                    Image(selectedAccessory).resizable().scaledToFit().frame(width: 480, height: 480)
                 }
-                HStack(spacing: 150) {
-                    ArrowButton(direction: .left) { accessoryIndex = (accessoryIndex - 1 + accessories.count) % accessories.count }
-                    ArrowButton(direction: .right) { accessoryIndex = (accessoryIndex + 1) % accessories.count }
-                }
-                NavigationLink(destination: ColorView(selectedDuck: selectedDuck, selectedEyes: selectedEyes, selectedHat: selectedHat,selectedClothing: selectedClothing, selectedAccessory: accessories[accessoryIndex])) {
-                    Image(systemName: "checkmark.circle.fill").font(.system(size: 50))
-                        .foregroundStyle(Color("Color"))
+                NavigationLink(destination: FinalView(selectedColor: $color, selectedDuck: selectedDuck, selectedEyes: selectedEyes, selectedHat: selectedHat,selectedClothing: selectedClothing, selectedAccessory: selectedAccessory)){
+                    Image(systemName: "checkmark.circle.fill").font(.system(size: 50)).foregroundStyle(Color("Color"))
                 }
                 .simultaneousGesture(TapGesture().onEnded { withAnimation(.none) {} })
             }
@@ -48,7 +50,6 @@ struct AccsView: View {
                         HStack(spacing: 4) {
                             Image(systemName: "chevron.left")
                             Text("Back")
-                            
                         }
                     }
                 }
@@ -56,13 +57,12 @@ struct AccsView: View {
         }
     }
 }
-#Preview {
-    NavigationView {
-        AccsView(
+    #Preview {
+        ColorView(
             selectedDuck: "duck1",
             selectedEyes: "eyes1",
             selectedHat: "hat1",
             selectedClothing: "shirt1",
+            selectedAccessory: "acc1"
         )
     }
-}
