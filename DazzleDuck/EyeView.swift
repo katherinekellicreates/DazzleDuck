@@ -10,7 +10,7 @@ import SwiftUI
 struct EyeView: View {
     @Environment(\.dismiss) var dismiss // back button
     let selectedDuck: String
-    let eyes = ["eyes1", "eyes2", "eyes3"]
+    let eyes = ["eyes1", "eyes2", "eyes3", "eyes4"]
     @State private var eyeIndex = 0
     
     var body: some View {

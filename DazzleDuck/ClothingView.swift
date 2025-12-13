@@ -13,7 +13,7 @@ struct ClothingView: View {
     let selectedEyes: String
     let selectedHat: String
     
-    let clothes = ["shirt1", "shirt2", "shirt3"]
+    let clothes = ["shirt1", "shirt2", "shirt3", "shirt4", "shirt5", "shirt6", "shirt7", "shirt8", "shirt9", "shirt10", "shirt11", "shirt12", "shirt13", "shirt14", "shirt15","shirt16", "shirt17"]
     @State private var clothingIndex = 0
     
     var body: some View {

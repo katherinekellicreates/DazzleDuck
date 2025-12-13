@@ -13,7 +13,7 @@ struct AccsView: View {
     let selectedEyes: String
     let selectedHat: String
     let selectedClothing: String
-    let accessories = ["acc1", "acc2", "acc3"]
+    let accessories = ["acc1", "acc2", "acc3","acc4", "acc5", "acc6", "acc7", "acc8", "acc9", "acc10", "acc11"]
     @State private var accessoryIndex = 0
     
     var body: some View {

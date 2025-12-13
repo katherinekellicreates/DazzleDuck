@@ -11,7 +11,7 @@ struct HatView: View {
     @Environment(\.dismiss) var dismiss // back button
     let selectedDuck: String
     let selectedEyes: String
-    let hats = ["hat1", "hat2", "hat3"]
+    let hats = ["hat1", "hat2", "hat3", "hat4", "hat5", "hat6", "hat7", "hat8", "hat9", "hat10", "hat11", "hat12", "hat13", "hat14"]
     @State private var hatIndex = 0
     
     var body: some View {

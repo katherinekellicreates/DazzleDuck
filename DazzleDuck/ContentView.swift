@@ -38,7 +38,9 @@ struct ContentView: View {
                 Color("Background").ignoresSafeArea(.all)
                 VStack {
                     CustomText(text:" DazzleDuck ") //works with font
-                    Spacer()
+                    Image("mainduck")
+                        .resizable().scaledToFit().frame(width: 480, height: 480)
+                        .padding(.top, -60)
                     NavigationLink(destination: PlayView()) {
                         Text("Play")
                             .frame(width: 100)
